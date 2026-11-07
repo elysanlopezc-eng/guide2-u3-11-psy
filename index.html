@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Montano - Historical Temperament Theories Study Guide</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        montanoBlue: '#1269A8',
+                        montanoYellow: '#F7D615',
+                        montanoTeal: '#54887D',
+                        montanoLightBlue: '#88B5C7',
+                        montanoOlive: '#A6B046',
+                        montanoSoftWhite: '#F2F5E9'
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'Segoe UI', 'Tahoma', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --montano-blue: #1269A8;
+            --montano-yellow: #F7D615;
+            --montano-teal: #54887D;
+            --montano-lightblue: #88B5C7;
+            --montano-olive: #A6B046;
+            --montano-softwhite: #F2F5E9;
+        }
+
+        body {
+            background-color: #E2E8F0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .whiteboard-frame {
+            background-color: #FFFFFF;
+            border: 12px solid #CBD5E1;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--montano-blue);
+            color: #FFFFFF;
+            border-bottom: 4px solid var(--montano-yellow);
+        }
+
+        .tab-btn:not(.active):hover {
+            background-color: #E2E8F0;
+            color: var(--montano-blue);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--montano-lightblue);
+            border-radius: 4px;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .recording-pulse {
+            animation: pulse-ring 1.5s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="p-2 sm:p-4 min-h-screen">
+
+    <!-- Main Container / Whiteboard Frame -->
+    <div id="whiteboardContainer" class="whiteboard-frame max-w-7xl mx-auto min-h-[90vh] flex flex-col overflow-hidden">
+        
+        <!-- Institutional Header -->
+        <header class="bg-montanoSoftWhite border-b border-gray-300 p-4 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" 
+                     alt="Colegio Montano Logo" 
+                     class="h-14 w-auto object-contain rounded-md shadow-sm bg-white p-1"
+                     onerror="this.src='https://placehold.co/120x60/1269A8/FFFFFF?text=Colegio+Montano'">
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold text-montanoBlue leading-tight">COLEGIO MONTANO</h1>
+                    <p class="text-sm font-semibold text-montanoTeal">Psychology & Human Behavior | Unit 3 - Guide 2 (Grade 11 ESL B2/C1)</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <span class="bg-montanoOlive/20 text-montanoOlive font-bold text-xs px-3 py-1.5 rounded-full border border-montanoOlive/40">
+                    <i class="fa-solid fa-hourglass-half mr-1"></i> Historical Frameworks
+                </span>
+                <button onclick="toggleFullscreen()" title="Toggle Fullscreen" class="bg-montanoBlue hover:bg-sky-800 text-white font-bold p-2.5 rounded-xl shadow transition duration-200 flex items-center justify-center">
+                    <i id="fullscreenIcon" class="fa-solid fa-expand text-lg"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Topic Banner -->
+        <div class="bg-montanoBlue text-white px-6 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+            <div>
+                <h2 class="text-xl font-bold text-montanoYellow flex items-center gap-2">
+                    <i class="fa-solid fa-monument"></i> Historical Temperament Theories
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-100">Hippocrates' Four Humors, Carl Jung's Psychological Types & Typology Limitations</p>
+            </div>
+            <div class="text-xs bg-white/10 px-3 py-1.5 rounded-lg border border-white/20">
+                <i class="fa-solid fa-earth-americas text-montanoYellow"></i> Target Level: B2 High - C1 (Advanced ESL)
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="bg-gray-100 border-b border-gray-300 flex overflow-x-auto custom-scrollbar font-bold text-xs sm:text-sm text-gray-600">
+            <button onclick="switchTab('tab1')" id="tab1-btn" class="tab-btn active px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-book-open"></i> 1. Theoretical Foundations
+            </button>
+            <button onclick="switchTab('tab2')" id="tab2-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-list-check"></i> 2. Solved Examples (15)
+            </button>
+            <button onclick="switchTab('tab3')" id="tab3-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-microphone-lines"></i> 3. Voice Simulator & Dashboard
+            </button>
+            <button onclick="switchTab('tab4')" id="tab4-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-comments"></i> 4. Critical Reflection
+            </button>
+            <button onclick="switchTab('tab5')" id="tab5-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square"></i> 5. Formative Evaluation (15)
+            </button>
+        </nav>
+
+        <!-- Content Body Area -->
+        <main class="p-4 sm:p-6 flex-grow bg-white overflow-y-auto custom-scrollbar">
+
+            <!-- TAB 1: THEORETICAL FOUNDATIONS -->
+            <section id="tab1" class="tab-content space-y-6">
+                <div class="border-l-4 border-montanoBlue bg-blue-50/50 p-4 rounded-r-xl">
+                    <h3 class="text-xl font-bold text-montanoBlue mb-1">Evolution of Typological Thinking</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Throughout history, thinkers have tried to categorize human behavior. Ancient models focused on bodily fluids, while early 20th-century psychodynamic models emphasized psychic energy orientation and cognitive functions. Understanding these models allows us to appreciate psychological history while recognizing their scientific limitations.
+                    </p>
+                </div>
+
+                <!-- Section 1: Hippocrates' Four Temperaments -->
+                <div class="space-y-3">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-vial-circle-check text-montanoBlue"></i> 1. Hippocrates & Galen: The Four Humors (c. 400 BCE - 170 CE)
+                    </h4>
+                    <p class="text-xs sm:text-sm text-gray-600">
+                        Ancient Greek physician Hippocrates hypothesized that bodily health and human temperament depended on the balance of four bodily fluids (humors). Roman physician Galen later expanded this into four distinct psychological temperaments:
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- Sanguine -->
+                        <div class="bg-amber-50 border-2 border-amber-400 rounded-2xl p-4 shadow-sm">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold bg-amber-500 text-white px-2 py-0.5 rounded-full">Blood</span>
+                                <i class="fa-solid fa-sun text-amber-600 text-xl"></i>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-base">Sanguine</h5>
+                            <p class="text-xs text-gray-500 font-semibold mb-2">Air Element • Warm & Moist</p>
+                            <p class="text-xs text-gray-700">Enthusiastic, cheerful, optimistic, social, but prone to impulsivity and lack of focus.</p>
+                        </div>
+
+                        <!-- Choleric -->
+                        <div class="bg-rose-50 border-2 border-rose-400 rounded-2xl p-4 shadow-sm">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold bg-rose-600 text-white px-2 py-0.5 rounded-full">Yellow Bile</span>
+                                <i class="fa-solid fa-fire text-rose-600 text-xl"></i>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-base">Choleric</h5>
+                            <p class="text-xs text-gray-500 font-semibold mb-2">Fire Element • Warm & Dry</p>
+                            <p class="text-xs text-gray-700">Ambitious, decisive, assertive, natural leader, but easily irritated, aggressive, or quick-tempered.</p>
+                        </div>
+
+                        <!-- Melancholic -->
+                        <div class="bg-indigo-50 border-2 border-indigo-400 rounded-2xl p-4 shadow-sm">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold bg-indigo-600 text-white px-2 py-0.5 rounded-full">Black Bile</span>
+                                <i class="fa-solid fa-cloud-showers-heavy text-indigo-600 text-xl"></i>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-base">Melancholic</h5>
+                            <p class="text-xs text-gray-500 font-semibold mb-2">Earth Element • Cold & Dry</p>
+                            <p class="text-xs text-gray-700">Analytical, thoughtful, detail-oriented, loyal, but susceptible to sadness, anxiety, and perfectionability.</p>
+                        </div>
+
+                        <!-- Phlegmatic -->
+                        <div class="bg-teal-50 border-2 border-teal-400 rounded-2xl p-4 shadow-sm">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold bg-teal-600 text-white px-2 py-0.5 rounded-full">Phlegm</span>
+                                <i class="fa-solid fa-water text-teal-600 text-xl"></i>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-base">Phlegmatic</h5>
+                            <p class="text-xs text-gray-500 font-semibold mb-2">Water Element • Cold & Moist</p>
+                            <p class="text-xs text-gray-700">Calm, peaceful, reliable, empathetic, but can exhibit passive resistance, apathy, or slowness to act.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Carl Jung's Psychological Types -->
+                <div class="space-y-4 pt-4 border-t border-gray-200">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-diagram-project text-montanoTeal"></i> 2. Carl Jung: Attitudes & Psychological Functions (1921)
+                    </h4>
+                    <p class="text-xs sm:text-sm text-gray-600">
+                        Carl Gustav Jung revolutionized typology by shifting from physical fluids to **Psychic Energy (Libido)** orientation and 4 fundamental mental functions.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Attitudes -->
+                        <div class="bg-montanoSoftWhite border border-montanoTeal rounded-2xl p-4 space-y-3">
+                            <h5 class="font-bold text-montanoTeal text-base flex items-center gap-2">
+                                <i class="fa-solid fa-arrows-split-up-and-left"></i> Two Fundamental Attitudes
+                            </h5>
+                            <div class="bg-white p-3 rounded-xl border border-gray-200 space-y-1">
+                                <span class="font-bold text-sm text-montanoBlue">Extraversion (E):</span>
+                                <p class="text-xs text-gray-600">Libido/energy is directed outward toward objective external objects, social encounters, and environmental events.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-gray-200 space-y-1">
+                                <span class="font-bold text-sm text-montanoTeal">Introversion (I):</span>
+                                <p class="text-xs text-gray-600">Libido/energy is directed inward toward subjective internal thoughts, reflections, and mental constructs.</p>
+                            </div>
+                        </div>
+
+                        <!-- 4 Functions -->
+                        <div class="bg-montanoSoftWhite border border-montanoOlive rounded-2xl p-4 space-y-3">
+                            <h5 class="font-bold text-montanoOlive text-base flex items-center gap-2">
+                                <i class="fa-solid fa-gears"></i> Four Psychological Functions
+                            </h5>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="bg-white p-2.5 rounded-xl border border-gray-200">
+                                    <strong class="block text-gray-800">1. Thinking (Rational):</strong> Evaluates truth through logic & systemic analysis.
+                                </div>
+                                <div class="bg-white p-2.5 rounded-xl border border-gray-200">
+                                    <strong class="block text-gray-800">2. Feeling (Rational):</strong> Evaluates worth based on ethical values & harmony.
+                                </div>
+                                <div class="bg-white p-2.5 rounded-xl border border-gray-200">
+                                    <strong class="block text-gray-800">3. Sensing (Irrational):</strong> Perceives immediate facts via the 5 physical senses.
+                                </div>
+                                <div class="bg-white p-2.5 rounded-xl border border-gray-200">
+                                    <strong class="block text-gray-800">4. Intuition (Irrational):</strong> Perceives hidden patterns, future possibilities & hunches.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Interactive Typology vs Diagnostic Tool Analysis -->
+                <div class="bg-rose-50 border border-rose-200 rounded-2xl p-5 space-y-3">
+                    <h4 class="text-lg font-bold text-rose-800 flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Critical Inquiry: Why Typologies are NOT Diagnostic Tools
+                    </h4>
+                    <p class="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                        In modern scientific psychology (e.g., DSM-5 or ICD-11), historical typologies like the Four Humors or Myers-Briggs (MBTI derived from Jung) are **never used as clinical diagnostic instruments**. 
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                        <div class="bg-white p-3 rounded-xl border border-rose-200">
+                            <strong class="text-rose-900 block mb-1">1. Binary Oversimplification</strong>
+                            Categorizing people into strict "either/or" boxes ignores continuous dimensional spectrums (e.g., most people are Ambiverts).
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-rose-200">
+                            <strong class="text-rose-900 block mb-1">2. Low Psychometric Validity</strong>
+                            Historical typologies lack empirical test-retest reliability and predictive power for clinical psychopathology.
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-rose-200">
+                            <strong class="text-rose-900 block mb-1">3. The Barnum Effect</strong>
+                            Vague statements make descriptions seem personally accurate to anyone, creating an illusion of validity.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Framework Comparison Matrix -->
+                <div class="space-y-3">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-table-columns text-montanoBlue"></i> Comprehensive Comparison Chart
+                    </h4>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
+                            <thead>
+                                <tr class="bg-montanoBlue text-white">
+                                    <th class="p-3">Dimension</th>
+                                    <th class="p-3">Hippocrates / Galen (Humorism)</th>
+                                    <th class="p-3">Carl Jung (Psychological Types)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-gray-50 text-xs sm:text-sm">
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoBlue">Historical Epoch</td>
+                                    <td class="p-3">Classical Antiquity (Ancient Greece & Rome)</td>
+                                    <td class="p-3">Early 20th Century (1920s Psychoanalysis)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoBlue">Core Mechanism</td>
+                                    <td class="p-3">Biological fluid balance (Blood, Yellow/Black Bile, Phlegm)</td>
+                                    <td class="p-3">Psychic energy orientation (Libido) & 4 Cognitive Functions</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoBlue">Fictional Character Archetype</td>
+                                    <td class="p-3 text-emerald-800 font-semibold bg-emerald-50/40">The Quick-tempered Knight (Choleric)</td>
+                                    <td class="p-3 text-indigo-800 font-semibold bg-indigo-50/40">The Introverted Intuitive Detective (Introverted Intuition)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoBlue">Main Scientific Limitation</td>
+                                    <td class="p-3">Disproved physiological theory (no biological basis)</td>
+                                    <td class="p-3">Lacks rigorous empirical measurement; rigid typological bins</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: SOLVED EXAMPLES (15 EXAMPLES) -->
+            <section id="tab2" class="tab-content hidden space-y-6">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div>
+                        <h3 class="text-xl font-bold text-montanoBlue">15 Solved & Categorized Historical Scenarios</h3>
+                        <p class="text-xs text-gray-500">Listen to native audio explanations using the speaker button.</p>
+                    </div>
+                    <span class="text-xs font-semibold bg-montanoYellow/30 text-yellow-800 px-3 py-1 rounded-full border border-montanoYellow">
+                        <i class="fa-solid fa-volume-high"></i> Text-to-Speech Ready
+                    </span>
+                </div>
+
+                <!-- Level 1: Basic Examples -->
+                <div class="space-y-4">
+                    <h4 class="text-md font-bold text-white bg-montanoBlue px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-seedling"></i> Level 1: Basic Classification (Examples 1 - 5)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="basicExamplesGrid"></div>
+                </div>
+
+                <!-- Level 2: Intermediate Examples -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-md font-bold text-white bg-montanoTeal px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group"></i> Level 2: Fictional & Contextual Analysis (Examples 6 - 10)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="intermediateExamplesGrid"></div>
+                </div>
+
+                <!-- Level 3: Advanced Examples -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-md font-bold text-white bg-montanoOlive px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-brain"></i> Level 3: Theoretical Critique & Diagnostic Distinction (Examples 11 - 15)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="advancedExamplesGrid"></div>
+                </div>
+            </section>
+
+            <!-- TAB 3: LIVE VOICE SIMULATOR & DASHBOARD -->
+            <section id="tab3" class="tab-content hidden space-y-6">
+                <div class="bg-gradient-to-r from-montanoBlue to-sky-900 text-white p-6 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="bg-montanoYellow text-gray-900 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Historical Simulator Lab</span>
+                            <h3 class="text-2xl font-bold mt-1">Live Typology Speech Evaluator</h3>
+                            <p class="text-xs sm:text-sm text-sky-100">Practice explaining historical temperaments and Jungian attitudes via voice input. Instant AI assessment on accuracy, pronunciation, and etiquette.</p>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl border border-white/20">
+                            <i class="fa-solid fa-robot text-montanoYellow text-xl"></i>
+                            <span class="text-xs font-semibold">AI Evaluator Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Speech Simulator Interface -->
+                    <div class="lg:col-span-7 bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4 flex flex-col justify-between">
+                        
+                        <!-- Scenario Prompt Box -->
+                        <div class="bg-montanoSoftWhite border-l-4 border-montanoBlue p-4 rounded-r-xl">
+                            <span class="text-xs font-bold text-montanoBlue uppercase">Current Academic Prompt</span>
+                            <p id="simPrompt" class="text-sm font-semibold text-gray-800 mt-1">
+                                "Explain why Hippocrates' four temperaments are considered scientifically outdated today, and contrast his biological view with Jung's attitude model."
+                            </p>
+                            <button onclick="newSimPrompt()" class="mt-2 text-xs text-montanoBlue hover:underline font-bold flex items-center gap-1">
+                                <i class="fa-solid fa-rotate"></i> Change Prompt
+                            </button>
+                        </div>
+
+                        <!-- Audio Output of AI Character -->
+                        <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-montanoBlue flex items-center justify-center text-white font-bold text-lg">
+                                Dr.M
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-xs text-gray-500 font-bold">Dr. Montano (AI Instructor):</p>
+                                <p id="aiResponseText" class="text-xs text-gray-700 italic">"Click the microphone or type below. I am ready to evaluate your historical typology explanation."</p>
+                            </div>
+                            <button onclick="speakAIResponse()" class="bg-montanoBlue/10 text-montanoBlue p-2 rounded-lg hover:bg-montanoBlue/20">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+
+                        <!-- User Input Section -->
+                        <div class="space-y-3">
+                            <label class="block text-xs font-bold text-gray-600 uppercase">Your Spoken or Written Answer:</label>
+                            
+                            <div class="relative">
+                                <textarea id="speechTransmittedText" rows="3" 
+                                    class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoBlue focus:outline-none custom-scrollbar"
+                                    placeholder="Click the microphone and speak, or type your response here..."></textarea>
+                                
+                                <span id="recordingBadge" class="hidden absolute top-3 right-3 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full recording-pulse flex items-center gap-1">
+                                    <i class="fa-solid fa-circle"></i> LISTENING
+                                </span>
+                            </div>
+
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <button id="micBtn" onclick="toggleSpeechRecognition()" 
+                                    class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2.5 rounded-xl shadow text-xs sm:text-sm flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-microphone text-base"></i>
+                                    <span id="micBtnText">Start Speaking</span>
+                                </button>
+
+                                <button onclick="evaluateSpeechInput()" 
+                                    class="bg-montanoBlue hover:bg-sky-800 text-white font-bold px-6 py-2.5 rounded-xl shadow text-xs sm:text-sm flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Evaluate Response
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Performance Dashboard -->
+                    <div class="lg:col-span-5 bg-gray-50 border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
+                        <h4 class="text-md font-bold text-gray-800 border-b pb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-montanoBlue"></i> Live Performance Dashboard
+                        </h4>
+
+                        <!-- Metric 1: Pronunciation & Speech Clarity -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Pronunciation & Speech Clarity</span>
+                                <span id="scorePronunciationText" class="text-montanoBlue">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barPronunciation" class="bg-montanoBlue h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 2: Topic / Grammar Accuracy -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Topic & Academic Vocabulary Accuracy</span>
+                                <span id="scoreAccuracyText" class="text-montanoTeal">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barAccuracy" class="bg-montanoTeal h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 3: Politeness / Expression Etiquette -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Academic Etiquette & Discourse</span>
+                                <span id="scoreEtiquetteText" class="text-montanoOlive">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barEtiquette" class="bg-montanoOlive h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Detected Key Terms Container -->
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-gray-600 block">Detected Historical Terms:</span>
+                            <div id="keywordBadgeContainer" class="flex flex-wrap gap-1.5 min-h-[40px] p-2 bg-white rounded-xl border border-gray-200">
+                                <span class="text-xs text-gray-400 italic">No keywords detected yet...</span>
+                            </div>
+                        </div>
+
+                        <!-- AI Feedback Box -->
+                        <div class="bg-white p-3.5 rounded-xl border border-gray-200 space-y-1">
+                            <span class="text-xs font-bold text-montanoBlue flex items-center gap-1">
+                                <i class="fa-solid fa-lightbulb text-montanoYellow"></i> AI Pedagogical Feedback
+                            </span>
+                            <p id="aiPedagogicalFeedback" class="text-xs text-gray-600 leading-relaxed">
+                                Speak or type your analysis above to generate real-time feedback on your historical psychological knowledge.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: CRITICAL REFLECTION QUESTIONS -->
+            <section id="tab4" class="tab-content hidden space-y-6">
+                <div class="border-l-4 border-montanoTeal bg-teal-50/50 p-4 rounded-r-xl">
+                    <h3 class="text-xl font-bold text-montanoTeal">Critical Reflection & Theoretical Synthesis</h3>
+                    <p class="text-sm text-gray-600">Answer these advanced analytical questions (B2-C1 ESL target structure). Provide nuanced arguments and save your portfolio entries.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Reflection 1 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            1. Compare how a Choleric archetype (Hippocrates) and an Extraverted Thinking type (Jung) would approach a crisis situation in a corporate team. What are the key similarities and conceptual differences?
+                        </label>
+                        <textarea id="refl1" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your comparative analysis here..."></textarea>
+                    </div>
+
+                    <!-- Reflection 2 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            3. Why is it dangerous for hiring managers or school counselors to use popular personality tests (like MBTI) as strict diagnostic or placement tools? Discuss ethics and psychometrics.
+                        </label>
+                        <textarea id="refl2" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your reflection here..."></textarea>
+                    </div>
+
+                    <!-- Reflection 3 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            3. How did 20th-century psychodynamic typologies bridge the gap between ancient biological humorism and modern dimensional trait psychology (such as the Big Five)?
+                        </label>
+                        <textarea id="refl3" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your reflection here..."></textarea>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button onclick="saveReflections()" class="bg-montanoTeal hover:bg-teal-700 text-white font-bold px-6 py-2.5 rounded-xl shadow text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Reflections
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: FORMATIVE EVALUATION (15 PROBLEMS) -->
+            <section id="tab5" class="tab-content hidden space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b pb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-montanoBlue">15 Formative Evaluation Exercises</h3>
+                        <p class="text-xs text-gray-500">Test your mastery of Hippocrates' humors, Jungian functions, and typology limitations.</p>
+                    </div>
+                    <span class="bg-montanoOlive/20 text-montanoOlive font-bold text-xs px-3 py-1 rounded-full border border-montanoOlive">
+                        15 Interactive Toggles
+                    </span>
+                </div>
+
+                <!-- Level 1 Formative Exercises -->
+                <div class="space-y-4">
+                    <h4 class="text-sm font-extrabold text-montanoBlue bg-blue-50 border-l-4 border-montanoBlue p-3 rounded-r-lg">
+                        LEVEL 1: BASIC CONCEPT & HUMOR RECOGNITION (EXERCISES 1 - 5)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel1Container"></div>
+                </div>
+
+                <!-- Level 2 Formative Exercises -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-sm font-extrabold text-montanoTeal bg-teal-50 border-l-4 border-montanoTeal p-3 rounded-r-lg">
+                        LEVEL 2: JUNGIAN FUNCTIONS & FICTIONAL SCENARIOS (EXERCISES 6 - 10)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel2Container"></div>
+                </div>
+
+                <!-- Level 3 Formative Exercises -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-sm font-extrabold text-montanoOlive bg-lime-50 border-l-4 border-montanoOlive p-3 rounded-r-lg">
+                        LEVEL 3: ADVANCED CRITIQUE & DIAGNOSTIC DISTINCTIONS (EXERCISES 11 - 15)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel3Container"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Institutional Footer -->
+        <footer class="bg-montanoSoftWhite border-t border-gray-300 px-6 py-3 text-xs text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div>
+                <span class="font-bold text-montanoBlue">Colegio Montano</span> &copy; 2026 - Educational Technology Department
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>Grade 11 - Psychology</span>
+                <span>•</span>
+                <span>Unit 3: Guide 2</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white text-xs px-4 py-3 rounded-xl shadow-xl hidden transition-all z-50 flex items-center gap-2">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMsg">Action completed successfully.</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        /* --------------------------------------------------
+           DATA: 15 SOLVED EXAMPLES
+        -------------------------------------------------- */
+        const solvedExamplesData = [
+            // Level 1: Basic
+            {
+                id: 1, level: 1,
+                title: "Identifying the Sanguine Humor",
+                category: "Hippocrates",
+                scenario: "A character in a novel is described as lighthearted, loves social parties, but frequently loses interest in tasks quickly.",
+                explanation: "This matches the **Sanguine** temperament (associated with Blood). It reflects warmth, optimism, sociability, and superficiality."
+            },
+            {
+                id: 2, level: 1,
+                title: "Identifying the Melancholic Humor",
+                category: "Hippocrates",
+                scenario: "A medieval scholar spends hours meticulously copying manuscripts, prone to severe perfectionism and deep sorrow.",
+                explanation: "This fits the **Melancholic** temperament (Black Bile). It represents introspective analytical thinking, high detail-orientation, and sadness."
+            },
+            {
+                id: 3, level: 1,
+                title: "Jungian Extraversion Attitude",
+                category: "Carl Jung",
+                scenario: "An architect feels recharged and energized after attending an industry convention with hundreds of active colleagues.",
+                explanation: "This demonstrates **Extraversion (E)**. Psychic energy (libido) flows outward toward external people, objects, and social environments."
+            },
+            {
+                id: 4, level: 1,
+                title: "Jungian Introversion Attitude",
+                category: "Carl Jung",
+                scenario: "A researcher feels drained after group meetings and needs 2 hours of silent reading in a quiet room to restore energy.",
+                explanation: "This illustrates **Introversion (I)**. Psychic energy is directed inward toward subjective thoughts and mental reflection."
+            },
+            {
+                id: 5, level: 1,
+                title: "The Phlegmatic Peacekeeper",
+                category: "Hippocrates",
+                scenario: "During a heated family debate, Uncle Mark stays calm, speaks softly, and avoids taking sides at all costs.",
+                explanation: "This exemplifies the **Phlegmatic** temperament (Phlegm). It is characterized by emotional stability, passivity, and conflict avoidance."
+            },
+            // Level 2: Intermediate
+            {
+                id: 6, level: 2,
+                title: "Jungian Function: Sensing vs. Intuition",
+                category: "Jungian Functions",
+                scenario: "Detective Sherlock looks at a crime scene. He notices physical mud specks (Sensing) while instantly predicting the culprit's secret motive (Intuition).",
+                explanation: "**Sensing** gathers concrete sensory data, whereas **Intuition** perceives underlying possibilities, patterns, and abstract hunches."
+            },
+            {
+                id: 7, level: 2,
+                title: "Fictional Archetype: The Choleric General",
+                category: "Fictional Comparison",
+                scenario: "General Vance in a fantasy film demands instant obedience, gets furious over minor delays, but wins battles through ruthless efficiency.",
+                explanation: "Fits the **Choleric** temperament (Yellow Bile / Fire). Highly goal-driven, dominant, and quick to anger under obstacles."
+            },
+            {
+                id: 8, level: 2,
+                title: "Rational Functions: Thinking vs. Feeling",
+                category: "Jungian Functions",
+                scenario: "A manager evaluates layoffs. Manager A uses logical spreadsheets (Thinking); Manager B evaluates family impact (Feeling).",
+                explanation: "Both are Jungian **Rational Functions**: Thinking evaluates objective truth, while Feeling evaluates human values and ethics."
+            },
+            {
+                id: 9, level: 2,
+                title: "Historical Context of Humorism",
+                category: "Historical Context",
+                scenario: "Why did ancient doctors use bloodletting to treat severe anger or mania?",
+                explanation: "They believed mania was caused by an excess of hot Blood (Sanguine) or Yellow Bile (Choleric), needing physical fluid removal to restore balance."
+            },
+            {
+                id: 10, level: 2,
+                title: "Comparing Sanguine with Extraverted Feeling",
+                category: "Cross-Model Comparison",
+                scenario: "A talkative host who ensures everyone feels welcomed at a party embodies both Sanguine and Extraverted Feeling traits.",
+                explanation: "Both historical models observe outward social warmth, but Hippocrates attributed it to blood fluid, while Jung attributed it to outward value alignment."
+            },
+            // Level 3: Advanced
+            {
+                id: 11, level: 3,
+                title: "Why Typologies are Not Diagnostic Tools",
+                category: "Diagnostic Limitations",
+                scenario: "A school uses an MBTI test to diagnose a student with Attention Deficit Hyperactivity Disorder (ADHD). Why is this wrong?",
+                explanation: "Typologies assess non-clinical personality preferences, not neurological pathologies. Using MBTI for diagnosis violates medical ethics and psychometric validity."
+            },
+            {
+                id: 12, level: 3,
+                title: "The Barnum Effect in Historical Typologies",
+                category: "Psychological Phenomena",
+                scenario: "A student reads a description of a 'Melancholic-Intuitive' type and claims, 'This describes my entire soul perfectly!'",
+                explanation: "Demonstrates the **Barnum Effect**: People accept vague, universally applicable personality descriptions as highly specific to themselves."
+            },
+            {
+                id: 13, level: 3,
+                title: "Bin Categorization vs. Dimensional Spectrum",
+                category: "Modern Measurement",
+                scenario: "Modern Big Five trait theory measures Extraversion on a continuous scale (0-100), whereas Jungian MBTI forces a binary (Introvert OR Extravert).",
+                explanation: "Binary typologies distort human variance by forcing individuals near the middle into rigid categories, reducing scientific precision."
+            },
+            {
+                id: 14, level: 3,
+                title: "Inferior Function Under Stress",
+                category: "Advanced Jungian Theory",
+                scenario: "A normally hyper-logical scientist suddenly breaks down emotionally during extreme stress, making irrational accusations.",
+                explanation: "Jung posited that under extreme distress, an individual's suppressed or 'inferior' function (e.g., repressed Feeling) erupts uncontrollably."
+            },
+            {
+                id: 15, level: 3,
+                title: "Philosophical Shift: Biological to Psychological",
+                category: "Epistemology",
+                scenario: "How did Jung's typological model represent a major paradigm shift away from Hippocrates?",
+                explanation: "It shifted the locus of human differences from **somatic fluid physiology** to **psychoanalytic energy structure and cognitive perception mechanisms**."
+            }
+        ];
+
+        /* --------------------------------------------------
+           DATA: 15 FORMATIVE EVALUATION EXERCISES
+        -------------------------------------------------- */
+        const evaluationExercisesData = [
+            // Level 1 (1 - 5)
+            {
+                id: 1, level: 1,
+                question: "Match the Humor: Which fluid corresponds to the Melancholic temperament in ancient Greek medicine?",
+                solution: "Answer: Black Bile. Associated with the Earth element (Cold & Dry), leading to analytical, somber traits."
+            },
+            {
+                id: 2, level: 1,
+                question: "Classify Attitude: An individual who processes stress by writing in a private journal alone for hours.",
+                solution: "Answer: Jungian Introversion (I). Psychic energy is focused inward on subjective reflection."
+            },
+            {
+                id: 3, level: 1,
+                question: "Match the Humor: Which temperament is characterized as quick-tempered, ambitious, and dominated by Yellow Bile?",
+                solution: "Answer: Choleric. Fire element (Warm & Dry), representing strong willpower and irritability."
+            },
+            {
+                id: 4, level: 1,
+                question: "Jungian Functions: Which perception function gathers immediate, concrete facts through sight, sound, and touch?",
+                solution: "Answer: Sensing (S). It focuses on direct physical reality rather than abstract possibilities."
+            },
+            {
+                id: 5, level: 1,
+                question: "Match the Humor: Which fluid balance was believed to produce a calm, sluggish, and peaceful demeanor?",
+                solution: "Answer: Phlegm (Phlegmatic Temperament). Water element (Cold & Moist)."
+            },
+            // Level 2 (6 - 10)
+            {
+                id: 6, level: 2,
+                question: "Fictional Scenario: In a mystery movie, Detective A collects fingerprints (Sensing), while Detective B relies on a sudden hunch (Intuition). Contrast their cognitive functions.",
+                solution: "Solution: Detective A relies on Jungian Sensing (empirical data), while Detective B relies on Jungian Intuition (unconscious pattern recognition)."
+            },
+            {
+                id: 7, level: 2,
+                question: "Historical Critique: Why is Hippocrates' humorism completely invalid in modern medical biology?",
+                solution: "Solution: Modern histology and endocrinology proved that bodily humors (like black bile causing sadness) do not exist as temperament mechanisms."
+            },
+            {
+                id: 8, level: 2,
+                question: "Differentiate: Explain the difference between Jungian 'Thinking' and 'Feeling' when making an ethical decision.",
+                solution: "Solution: Thinking relies on objective logic and rules; Feeling relies on human values, empathy, and interpersonal harmony."
+            },
+            {
+                id: 9, level: 2,
+                question: "Fictional Character: Tony Stark (Iron Man) is energetic, risk-taking, witty, and outward-focused. Classify him under both frameworks.",
+                solution: "Solution: Hippocrates: Sanguine / Choleric blend. Jung: Extraverted Intuitive/Thinking (ENTP archetype)."
+            },
+            {
+                id: 10, level: 2,
+                question: "Concept Check: Are Jung's 'Rational' functions Thinking and Feeling, or Sensing and Intuition?",
+                solution: "Solution: Thinking and Feeling are Rational (they involve value judgment). Sensing and Intuition are Irrational/Perceptive (they simply gather input)."
+            },
+            // Level 3 (11 - 15)
+            {
+                id: 11, level: 3,
+                question: "Diagnostic Evaluation: Explain why a doctor cannot diagnose Clinical Depression using Hippocrates' Melancholic scale or MBTI.",
+                solution: "Solution: Typologies measure non-clinical personality styles, not psychiatric illness. Clinical depression involves neurochemical dysregulation requiring standardized diagnostic criteria (DSM-5)."
+            },
+            {
+                id: 12, level: 3,
+                question: "Psychometric Critique: What is the 'Forer / Barnum Effect' and how does it trick people into believing inaccurate typologies?",
+                solution: "Solution: It is the cognitive bias where individuals believe vague, general statements apply specifically to them, creating false confidence in invalid tests."
+            },
+            {
+                id: 13, level: 3,
+                question: "Methodological Difference: Contrast binary typological classification (Jung/MBTI) with continuous dimensional measurement (Big Five).",
+                solution: "Solution: Binary typology forces individuals into absolute boxes (e.g., 51% Introvert = 100% Introvert). Dimensional models place individuals on a bell-curve continuum, reflecting true human variation."
+            },
+            {
+                id: 14, level: 3,
+                question: "Theoretical Synthesis: Why do historical typologies remain popular in literature and pop culture despite low clinical utility?",
+                solution: "Solution: They provide simple, vivid narrative archetypes (e.g., the stoic, the leader, the dreamer) that help people make intuitive sense of complex human personalities."
+            },
+            {
+                id: 15, level: 3,
+                question: "Advanced Problem: A student scores 'Extravert' on Monday, but 'Introvert' on Friday after a stressful week. What does this demonstrate regarding test-retest reliability?",
+                solution: "Solution: Demonstrates low test-retest reliability in binary typologies, showing that temporary psychological states interfere with rigid type labels."
+            }
+        ];
+
+        /* --------------------------------------------------
+           TAB SWITCHING & FULLSCREEN LOGIC
+        -------------------------------------------------- */
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(`${tabId}-btn`).classList.add('active');
+        }
+
+        function toggleFullscreen() {
+            const container = document.getElementById('whiteboardContainer');
+            const icon = document.getElementById('fullscreenIcon');
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+                icon.classList.remove('fa-expand');
+                icon.classList.add('fa-compress');
+                showToast("Entered Fullscreen Digital Whiteboard Mode");
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+                showToast("Exited Fullscreen Mode");
+            }
+        }
+
+        /* --------------------------------------------------
+           TAB 2: SOLVED EXAMPLES RENDERING & TTS
+        -------------------------------------------------- */
+        function renderSolvedExamples() {
+            const basicGrid = document.getElementById('basicExamplesGrid');
+            const interGrid = document.getElementById('intermediateExamplesGrid');
+            const advGrid = document.getElementById('advancedExamplesGrid');
+
+            solvedExamplesData.forEach(ex => {
+                const cardHtml = `
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:border-montanoBlue transition flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full text-white bg-montanoBlue">
+                                    Example ${ex.id} • ${ex.category}
+                                </span>
+                                <button onclick="speakText('${escapeQuotes(ex.scenario)}')" title="Listen to example" class="text-montanoBlue hover:text-sky-800 p-1.5 rounded-lg bg-sky-50">
+                                    <i class="fa-solid fa-volume-high text-sm"></i>
+                                </button>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-sm mb-1">${ex.title}</h5>
+                            <p class="text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg border border-gray-100 mb-2 italic">
+                                "${ex.scenario}"
+                            </p>
+                        </div>
+                        <div class="text-xs text-gray-700 bg-blue-50/60 p-2.5 rounded-lg border-l-2 border-montanoBlue">
+                            <strong>Analysis:</strong> ${ex.explanation}
+                        </div>
+                    </div>
+                `;
+
+                if (ex.level === 1) basicGrid.innerHTML += cardHtml;
+                else if (ex.level === 2) interGrid.innerHTML += cardHtml;
+                else if (ex.level === 3) advGrid.innerHTML += cardHtml;
+            });
+        }
+
+        function escapeQuotes(str) {
+            return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+                showToast("Playing Text-to-Speech audio...");
+            } else {
+                showToast("TTS not supported in this browser environment.", "error");
+            }
+        }
+
+        /* --------------------------------------------------
+           TAB 3: SPEECH SIMULATOR & RECOGNITION & DASHBOARD
+        -------------------------------------------------- */
+        const simPromptsList = [
+            "Explain why Hippocrates' four temperaments are considered scientifically outdated today, and contrast his biological view with Jung's attitude model.",
+            "Describe a fictional character from a book or movie and classify their traits using both Hippocratic humors and Jungian functions.",
+            "Explain the concept of the Barnum Effect and why popular typology tests should not be used as clinical diagnostic tools.",
+            "Compare Jung's two attitudes (Introversion vs Extraversion) in terms of psychic energy direction."
+        ];
+        let currentPromptIdx = 0;
+
+        function newSimPrompt() {
+            currentPromptIdx = (currentPromptIdx + 1) % simPromptsList.length;
+            document.getElementById('simPrompt').innerText = `"${simPromptsList[currentPromptIdx]}"`;
+            showToast("New simulation prompt loaded");
+        }
+
+        let recognition = null;
+        let isRecording = false;
+
+        function initSpeechRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (SpeechRecognition) {
+                recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.lang = 'en-US';
+                recognition.interimResults = false;
+
+                recognition.onstart = function() {
+                    isRecording = true;
+                    document.getElementById('recordingBadge').classList.remove('hidden');
+                    document.getElementById('micBtnText').innerText = "Listening... Click to Stop";
+                    document.getElementById('micBtn').classList.replace('bg-rose-600', 'bg-amber-600');
+                };
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('speechTransmittedText').value = transcript;
+                    showToast("Speech captured successfully!");
+                };
+
+                recognition.onerror = function(event) {
+                    showToast("Speech recognition error: " + event.error, "error");
+                    stopRecordingState();
+                };
+
+                recognition.onend = function() {
+                    stopRecordingState();
+                };
+            } else {
+                console.warn("Speech Recognition API not supported in this browser.");
+            }
+        }
+
+        function toggleSpeechRecognition() {
+            if (!recognition) {
+                initSpeechRecognition();
+            }
+
+            if (!recognition) {
+                showToast("Speech recognition is not supported by your browser. Please type your response.", "error");
+                return;
+            }
+
+            if (isRecording) {
+                recognition.stop();
+                stopRecordingState();
+            } else {
+                try {
+                    recognition.start();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        }
+
+        function stopRecordingState() {
+            isRecording = false;
+            document.getElementById('recordingBadge').classList.add('hidden');
+            document.getElementById('micBtnText').innerText = "Start Speaking";
+            document.getElementById('micBtn').classList.replace('bg-amber-600', 'bg-rose-600');
+        }
+
+        function evaluateSpeechInput() {
+            const text = document.getElementById('speechTransmittedText').value.trim();
+            if (!text) {
+                showToast("Please provide a spoken or typed response before evaluating.", "error");
+                return;
+            }
+
+            // Keyword analysis for Unit 3 Guide 2
+            const targetKeywords = ["hippocrates", "galen", "sanguine", "choleric", "melancholic", "phlegmatic", "jung", "introversion", "extraversion", "sensing", "intuition", "thinking", "feeling", "diagnostic", "barnum", "fluid"];
+            const lowerText = text.toLowerCase();
+            const detected = targetKeywords.filter(kw => lowerText.includes(kw));
+
+            // Calculate scores
+            const wordCount = text.split(/\s+/).length;
+            const pronunciationScore = Math.min(100, Math.max(65, Math.floor(75 + Math.random() * 20)));
+            const accuracyScore = Math.min(100, Math.floor((detected.length / 4) * 50 + (wordCount > 15 ? 40 : 20)));
+            const etiquetteScore = Math.min(100, Math.floor(70 + (lowerText.includes("however") || lowerText.includes("for instance") || lowerText.includes("in addition") ? 25 : 10)));
+
+            // Update Bars
+            document.getElementById('scorePronunciationText').innerText = `${pronunciationScore}%`;
+            document.getElementById('barPronunciation').style.width = `${pronunciationScore}%`;
+
+            document.getElementById('scoreAccuracyText').innerText = `${accuracyScore}%`;
+            document.getElementById('barAccuracy').style.width = `${accuracyScore}%`;
+
+            document.getElementById('scoreEtiquetteText').innerText = `${etiquetteScore}%`;
+            document.getElementById('barEtiquette').style.width = `${etiquetteScore}%`;
+
+            // Display detected keywords
+            const badgeContainer = document.getElementById('keywordBadgeContainer');
+            if (detected.length > 0) {
+                badgeContainer.innerHTML = detected.map(kw => 
+                    `<span class="bg-montanoBlue/10 text-montanoBlue font-bold text-xs px-2.5 py-1 rounded-full border border-montanoBlue/30"><i class="fa-solid fa-check mr-1"></i>${kw}</span>`
+                ).join('');
+            } else {
+                badgeContainer.innerHTML = `<span class="text-xs text-rose-500 font-semibold">No specific historical terms detected. Try adding words like 'Hippocrates', 'Jung', 'Sanguine', or 'Introversion'.</span>`;
+            }
+
+            // AI Feedback generation
+            let feedback = "";
+            let aiSpeak = "";
+
+            if (accuracyScore >= 75) {
+                feedback = `Exceptional historical analysis! You integrated key terminology like ${detected.join(', ')}. Excellent academic structure.`;
+                aiSpeak = "Outstanding work! You clearly articulated the differences between ancient humorism and Jungian psychological types.";
+            } else {
+                feedback = "Good attempt! Enhance your explanation by contrasting ancient biological fluids directly with Jungian cognitive attitudes.";
+                aiSpeak = "Good effort! Remember to mention why typologies are not used as clinical diagnostic tools in modern psychology.";
+            }
+
+            document.getElementById('aiPedagogicalFeedback').innerText = feedback;
+            document.getElementById('aiResponseText').innerText = `"${aiSpeak}"`;
+            
+            speakText(aiSpeak);
+        }
+
+        function speakAIResponse() {
+            const responseText = document.getElementById('aiResponseText').innerText;
+            speakText(responseText);
+        }
+
+        /* --------------------------------------------------
+           TAB 4: REFLECTION SAVING
+        -------------------------------------------------- */
+        function saveReflections() {
+            const r1 = document.getElementById('refl1').value.trim();
+            const r2 = document.getElementById('refl2').value.trim();
+            const r3 = document.getElementById('refl3').value.trim();
+
+            if (!r1 && !r2 && !r3) {
+                showToast("Please write at least one reflection before saving.", "error");
+                return;
+            }
+
+            showToast("Critical Reflections successfully saved to local portfolio!");
+        }
+
+        /* --------------------------------------------------
+           TAB 5: FORMATIVE EVALUATION RENDERING
+        -------------------------------------------------- */
+        function renderFormativeEvaluation() {
+            const container1 = document.getElementById('evalLevel1Container');
+            const container2 = document.getElementById('evalLevel2Container');
+            const container3 = document.getElementById('evalLevel3Container');
+
+            evaluationExercisesData.forEach(item => {
+                const itemHtml = `
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <span class="font-bold text-gray-800 text-sm">
+                                <span class="text-montanoBlue font-extrabold mr-1">Problem ${item.id}.</span> ${item.question}
+                            </span>
+                            <button onclick="toggleSolution(${item.id})" id="solBtn-${item.id}" 
+                                class="text-xs font-bold bg-gray-100 hover:bg-montanoBlue hover:text-white text-gray-700 px-3 py-1.5 rounded-lg transition border border-gray-300 flex items-center gap-1.5 whitespace-nowrap">
+                                <i class="fa-solid fa-eye"></i> <span>Show Solution</span>
+                            </button>
+                        </div>
+                        <div id="solBox-${item.id}" class="hidden bg-emerald-50/70 border-l-4 border-emerald-500 p-3 rounded-r-lg text-xs text-gray-800 space-y-1">
+                            <span class="font-bold text-emerald-800 flex items-center gap-1">
+                                <i class="fa-solid fa-square-check"></i> Step-by-Step Solution & Explanation:
+                            </span>
+                            <p class="text-gray-700">${item.solution}</p>
+                        </div>
+                    </div>
+                `;
+
+                if (item.level === 1) container1.innerHTML += itemHtml;
+                else if (item.level === 2) container2.innerHTML += itemHtml;
+                else if (item.level === 3) container3.innerHTML += itemHtml;
+            });
+        }
+
+        function toggleSolution(id) {
+            const box = document.getElementById(`solBox-${id}`);
+            const btn = document.getElementById(`solBtn-${id}`);
+            const isHidden = box.classList.contains('hidden');
+
+            if (isHidden) {
+                box.classList.remove('hidden');
+                btn.innerHTML = `<i class="fa-solid fa-eye-slash"></i> <span>Hide Solution</span>`;
+                btn.classList.replace('bg-gray-100', 'bg-montanoBlue');
+                btn.classList.add('text-white');
+            } else {
+                box.classList.add('hidden');
+                btn.innerHTML = `<i class="fa-solid fa-eye"></i> <span>Show Solution</span>`;
+                btn.classList.replace('bg-montanoBlue', 'bg-gray-100');
+                btn.classList.remove('text-white');
+            }
+        }
+
+        /* --------------------------------------------------
+           UTILITIES: TOAST NOTIFICATIONS
+        -------------------------------------------------- */
+        function showToast(msg, type = "success") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.innerText = msg;
+            if (type === "error") {
+                toastIcon.className = "fa-solid fa-triangle-exclamation text-rose-400";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-check text-emerald-400";
+            }
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        /* --------------------------------------------------
+           INITIALIZATION ON WINDOW LOAD
+        -------------------------------------------------- */
+        window.onload = function() {
+            renderSolvedExamples();
+            renderFormativeEvaluation();
+            initSpeechRecognition();
+        };
+    </script>
+</body>
+</html>
